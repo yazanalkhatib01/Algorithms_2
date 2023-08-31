@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+//Prent All Prime Number 1 to N
+//Problem #2
+
+int Read_Positive_Number(string message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << message << endl;
+		cin >> num;
+	} while (num <= 0);
+
+	return num;
+}
+
+enum en_Prime_NotPrime { Prime = 1, NotPrime = 2 };
+
+
+en_Prime_NotPrime Check_Prime(int number) {
+
+	int M = round(number / 2);//round()التقريب لاقرب عدد صحيح
+
+	for (int Counter = 2; Counter <= M; Counter++)
+	{
+		if (number % Counter == 0)
+			return en_Prime_NotPrime::NotPrime;
+	}
+	return en_Prime_NotPrime::Prime;
+}
+
+
+void Print_Prime_Numbers_From1toN(int num) {
+
+	cout << "Prime Numbers from 1 to " << num << " are:" << endl;
+
+	for (int i = 1; i <= num; i++)
+	{
+		if (en_Prime_NotPrime::Prime == Check_Prime(i))
+		{
+			cout << i << endl;
+		}
+	}
+}
+
+
+int main() {
+
+	Print_Prime_Numbers_From1toN(Read_Positive_Number("Enter Positive Number"));
+	
+	return 0;
+}
