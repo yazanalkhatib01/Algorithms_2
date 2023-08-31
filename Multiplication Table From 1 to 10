@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+//Multiplication Table From 1 to 10
+//Problem #1
+
+void Print_Table_Header() {
+
+    cout << "\n\n\t\t\tMultiplication Table From 1 to 10\n" << endl;
+	cout << "\t";
+
+	for (int i = 1;  i <= 10;  i++)
+	{
+		cout << i << "\t";
+	}
+	cout << "\n-----------------------------------------------------------------------------------------------\n" << endl;
+}
+
+
+string Colum_Separator(int i) {
+
+	if (i < 10)
+		return "    |";
+	else
+		return "   |";
+}
+
+
+void Print_Multiplication_Table() {
+
+	Print_Table_Header();
+
+	for (int i = 1; i <= 10; i++)
+	{
+		cout << i << Colum_Separator(i) << "\t";
+
+		for (int j = 1; j <= 10; j++)
+		{
+			cout << j * i << "\t";
+		}
+
+		cout << endl;
+	}
+}
+
+
+int main() {
+    
+	Print_Multiplication_Table();
+}
