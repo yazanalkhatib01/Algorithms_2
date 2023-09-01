@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-//Prent All Prime Number 1 to N
+//Print All Prime Number 1 to N
 //Problem #2
 
 int Read_Positive_Number(string message) {
