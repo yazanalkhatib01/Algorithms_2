@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Count Digit Frequency
+//Problem #8
+
+int Read_Positive_Number(string message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+
+	} while (num <= 0);
+
+	return num;
+}
+
+
+int Count_Digit_Frequency(int num, short digit_to_check) {
+
+	int Remainder = 0, count = 0;
+
+	while (num > 0)
+	{
+		Remainder = num % 10;
+		num = num / 10;
+		if (Remainder == digit_to_check)
+		{
+			count++;
+		}
+	}
+
+	return count;
+}
+
+
+int main() {
+	
+	int num = Read_Positive_Number("Please enter the main number?");
+	short digit_to_check = Read_Positive_Number("Please enter one digit to check?");
+
+	cout << "Digit "<< digit_to_check <<
+		" Frequency is "<< Count_Digit_Frequency(num,digit_to_check)
+		<<" Time(s)" << endl;
+
+
+	return 0;
+}
