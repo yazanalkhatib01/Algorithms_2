@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//sum of Digits
+//Problem #6
+
+int Read_positive_number(string message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+int sumof_Digits(int num) {
+
+	int Remainder = 0, sum = 0;
+
+	while (num > 0)
+	{
+		Remainder = num % 10;
+		num = num / 10;
+		sum = sum + Remainder;
+	}
+
+	return sum;
+}
+
+int main() {
+	cout << "\nSum of Digits= " <<
+		sumof_Digits(Read_positive_number("Enter Positive Number:"))
+		<< endl;
+
+	return 0;
+}
