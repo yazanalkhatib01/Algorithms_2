@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Reverse Number
+//Problem #7
+
+int Read_Positive_Number(string message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+
+	} while (num <= 0);
+
+	return num;
+}
+
+
+int Reverse_Number(int num) {
+
+	int Remainder = 0, num2 = 0;
+
+	while (num > 0)
+	{
+		Remainder = num % 10;
+		num = num / 10;
+		num2 = num2 * 10 + Remainder;
+	}
+
+	return num2;
+}
+
+
+int main() {
+	
+
+	cout << "Reverse Number= " <<
+		Reverse_Number(Read_Positive_Number("Please enter a positive number:"))
+		<< endl;
+
+
+	return 0;
+}
