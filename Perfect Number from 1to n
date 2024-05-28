@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Perfect Number from 1to n
+//Problem #4
+
+
+int Read_positive_number(string message) {
+
+	int num = 0;
+
+	do
+	{
+
+		cout << message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+
+bool Is_Perfect_number(int num) {
+
+	int sum = 0;
+
+	for (int i = 1;  i < num;  i++)
+	{
+		if (num % i == 0)
+		{
+			sum += i;
+		}
+	}
+
+	return sum == num;
+}
+
+void Print_Perfect_Numbers_From1ToN(int num) {
+
+	for (int i = 1; i <= num; i++)
+	{
+		if (Is_Perfect_number(i))
+		{
+			cout << i << endl;
+
+		}
+	}
+
+}
+
+int main() {
+
+	Print_Perfect_Numbers_From1ToN(Read_positive_number("Enter a Positive Number:"));
+
+
+	
+	return 0;
+}
