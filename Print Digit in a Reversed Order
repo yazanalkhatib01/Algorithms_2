@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Print Digit in a Reversed Order
+//Problem #5
+
+int Read_positive_number(string message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+void Print_Digits(int num) {
+
+	int Remainder = 0;
+
+	while (num > 0)
+	{
+
+		Remainder = num % 10;	// =6 | =5 | =4
+		num = num / 10;			// =12345 | =1234 | =123
+		cout << Remainder << endl;
+	}
+}
+
+int main() {
+
+	Print_Digits(Read_positive_number("Enter Positive Number:"));
+	
+	return 0;
+}
