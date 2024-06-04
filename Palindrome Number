@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//palindrome number
+//Problem #11
+
+int Reading_Positive_Number(string message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+int ReverceNumber(int number) {
+	
+	int Remainder = 0, num2 = 0;
+
+	while (number > 0)
+	{
+		Remainder = number % 10;
+		number = number / 10;
+		num2 = num2 * 10 + Remainder;
+	}
+
+	return num2;
+}
+
+bool IsPalindromeNumber(int Number) {
+
+	return Number == ReverceNumber(Number);
+}
+
+int main() {
+
+	if (IsPalindromeNumber(Reading_Positive_Number("Please Enter The a Number?")))
+		cout << "	Yes, it is a palindrome number.\n";
+	else
+		cout << "	No,it is NOT a palindrome number.\n";
+
+	return 0;
+}
