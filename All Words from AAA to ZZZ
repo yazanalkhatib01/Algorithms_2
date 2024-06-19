@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// All Words from AAA to ZZZ
+//Problem #16
+
+int Reading_Positive_Number(string message) {
+
+	int num = 0;
+
+ 	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+void Prent_Number_Pattern() {
+
+	string word = " ";
+
+	for (int i = 65; i <= 90; i++)
+	{
+		for (int x = 65; x <= 90; x++)
+		{
+			for (int z = 65; z <= 90; z++)
+			{
+				word = word + char(i);
+				word = word + char(x);
+				word = word + char(z);
+
+				cout << word << endl;
+
+				word = "";
+			}
+		}
+		cout << "\n----------------------\n";
+	}
+	cout << endl;
+}
+
+int main() {
+
+	Prent_Number_Pattern();
+
+	return 0;
+}
