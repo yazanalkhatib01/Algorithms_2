@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//letter Pattern
+//Problem #15
+
+int Reading_Positive_Number(string message) {
+
+	int num = 0;
+
+ 	do
+	{
+		cout << message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+void Prent_Number_Pattern(int number) {
+
+	for (int i = 65; i <= 65+number-1; i++)
+	{
+		cout << endl;
+		for (int x = 1; x <= i-65+1; x++)
+		{
+			cout << char(i);
+		}
+	}
+
+}
+
+int main() {
+
+	Prent_Number_Pattern(Reading_Positive_Number("Enter number: "));
+
+	return 0;
+}
