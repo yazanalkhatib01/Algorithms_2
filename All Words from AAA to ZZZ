@@ -5,20 +5,6 @@ using namespace std;
 // All Words from AAA to ZZZ
 //Problem #16
 
-int Reading_Positive_Number(string message) {
-
-	int num = 0;
-
- 	do
-	{
-		cout << message << endl;
-		cin >> num;
-
-	} while (num <= 0);
-
-	return num;
-}
-
 void Prent_Number_Pattern() {
 
 	string word = " ";
