@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+//Encrypt-Decrypt Text
+//Problem #18
+
+string Read_Text() {
+	string text;
+
+	cout << "Enter name:" << endl;
+	getline(cin, text);
+
+	return text;
+}
+
+string Encryption_Text(string Text,short Encryption_Key) {
+
+	for (int i = 0; i <= Text.length(); i++)
+	{
+
+		Text[i] = char((int)Text[i] + Encryption_Key);
+	}
+	return Text;
+}
+
+string Decrypt_Text(string Text, short Encryption_Key) {
+
+	for (int i = 0; i <= Text.length(); i++)
+	{
+
+		Text[i] = char((int)Text[i] - Encryption_Key);
+	}
+	return Text;
+}
+
+
+
+int main() {
+
+	const short Encryption_Key = 2;//this is the Key
+
+	string Text = Read_Text();
+	string After_Encryption = Encryption_Text(Text, Encryption_Key);
+	string After_Decryption = Decrypt_Text(After_Encryption, Encryption_Key);
+
+
+	cout << "\nText Before Encryption: " << Text << endl;
+	cout << "Text After Encryption: " << After_Encryption <<  endl;
+	cout << "Text After Decryption: " << After_Decryption << endl;
+
+	return 0;
+}
