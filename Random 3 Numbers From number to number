@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+//Random 3 Numbers From number to number
+//Problem #19
+
+int Randoum_Number(int from,int to) {
+
+	int Ran_NUM = rand() % (to - from + 1) + from;
+
+	return Ran_NUM;
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	cout << Randoum_Number(10, 20) << endl;
+	cout << Randoum_Number(10, 20) << endl;
+	cout << Randoum_Number(10, 20) << endl;
+
+	return 0;
+}
