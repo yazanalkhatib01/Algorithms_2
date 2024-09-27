@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+//fill array with random numbers from 1 to 100
+//Problem #23
+
+int random_number(int from,int to) {
+
+	int Random_num;
+	
+	Random_num = rand() % (to - from + 1) + from;
+
+	return Random_num;
+}
+
+void FillArrayWith_RandomNumber(int &Arr_Length, int Arr[100]) {
+
+	cout << "\nEnter Number of Elements:" << endl;
+	cin >> Arr_Length;
+
+	for (int i = 0; i < Arr_Length; i++)
+	{
+		Arr[i] = random_number(1, 100);
+	}
+}
+
+void Prent_Arry(int Arr_Length, int Arr[100]) {
+
+	cout << "\nArray Elements: ";
+
+	for (int i = 0; i < Arr_Length; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+
+	cout << endl;
+}
+
+
+int main() {
+	srand((unsigned)time(NULL)); //seeds the random number generator in C++, called only once.
+
+	int Arr[100], Arr_Length;
+
+	FillArrayWith_RandomNumber(Arr_Length, Arr);
+
+	Prent_Arry(Arr_Length, Arr);
+
+	return 0;
+}
