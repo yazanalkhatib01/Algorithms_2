@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+//fill array with random numbers from 1 to 100 Then print sum of random Array
+//Problem #26
+
+int random_Number(int from,int to) {
+
+	int RanNum;
+
+	RanNum = rand() % (to - from + 1) + from;
+
+	return RanNum;
+}
+
+void fillArrayWith_RandomNumbers(int &ArrLength,int Arr[100]) {
+
+	cout << "Enter Element Numbers:" << endl;
+	cin >> ArrLength;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Arr[i] = random_Number(0, 100);
+	}
+
+}
+
+void Print_Array(int ArrLength, int Arr[100]) {
+
+	cout << "\nArray Elements: ";
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+
+	cout << endl;
+}
+
+int MaxNumber_InArray(int ArrLength, int Arr[100]) {
+	int Max = 0;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (Arr[i] > Max)
+		{
+			Max = Arr[i];
+		}
+	}
+	return Max;
+}
+
+int MinNumber_InArray(int ArrLength, int Arr[100]) {
+	
+	int Min = 0;
+
+	Min = Arr[0];
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (Arr[i] < Min)
+		{
+			Min = Arr[i];
+		}
+	}
+	return Min;
+}
+
+int SumNumber_InArray(int ArrLength, int Arr[100]) {
+
+	int sum = 0;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		sum += Arr[i];
+	}
+	return sum;
+}
+
+
+
+int main() {
+	srand((unsigned)time(NULL));//seeds the random number generator in C++, called only once.
+
+	int ArrLength, Arr[100];
+
+	fillArrayWith_RandomNumbers(ArrLength, Arr);
+
+	Print_Array(ArrLength, Arr);
+
+
+	cout << "\nMax Number: ";
+	cout << MaxNumber_InArray(ArrLength, Arr) << endl;
+
+
+	cout << "\nMin Number: ";
+	cout << MinNumber_InArray(ArrLength, Arr) << endl;
+
+
+	cout << "\nSum Number: ";
+	cout << SumNumber_InArray(ArrLength, Arr) << endl;
+
+	return 0;
+}
