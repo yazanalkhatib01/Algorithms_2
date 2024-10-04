@@ -1,0 +1,85 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+// Copy only prime numbers
+// Problem #29
+
+enum enPrimeNotPrime { Prime = 1, NotPrime = 2 };
+enPrimeNotPrime ChechPrime(int number) {
+
+	int M = round(number / 2);
+
+	for (int counter = 2; counter <= M; counter++)
+	{
+		if (number % counter == 0)
+			return enPrimeNotPrime::NotPrime;
+		
+	}
+		return enPrimeNotPrime::Prime;
+}
+
+int random_Number(int from,int to) {
+
+	int RanNum;
+
+	RanNum = rand() % (to - from + 1) + from;
+
+	return RanNum;
+}
+
+void fillArrayWith_RandomNumbers(int &ArrLength,int Arr[100]) {
+
+	cout << "Enter Element Numbers:" << endl;
+	cin >> ArrLength;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Arr[i] = random_Number(1, 100);
+	}
+
+}
+
+void CopyPrimeNumbers_Array(int ArrLength, int ArrSource[100] ,int &Arr2Length, int ArrDestination[100]) {
+
+	int counter = 0;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (ChechPrime(ArrSource[i]) == enPrimeNotPrime::Prime)
+		{
+			ArrDestination[counter] = ArrSource[i];
+			counter++;
+		}
+	}
+	Arr2Length = --counter;
+}
+
+void Print_Array(int ArrLength, int Arr[100]) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int main() {
+	srand((unsigned)time(NULL));//seeds the random number generator in C++, called only once.
+
+	int ArrLength, Arr[100];
+	fillArrayWith_RandomNumbers(ArrLength, Arr);
+
+	int Arr2Length = 0, Arr2[100];
+	CopyPrimeNumbers_Array(ArrLength, Arr, Arr2Length, Arr2);
+
+	cout << "\nArray 1 Elements:\n";
+	Print_Array(ArrLength, Arr);
+
+	cout << "\nPrime Numbers in Array 2:\n";
+	Print_Array(Arr2Length, Arr2);
+
+
+	return 0;
+}
