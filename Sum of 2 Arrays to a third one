@@ -1,0 +1,74 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+// Sum of 2 Arrays to a third one
+// Problem #30
+
+int Read_Positeve_Number(string Message) {
+
+	int number = 0;
+
+	do
+	{
+		cout << Message << endl;
+		cin >> number;
+	} while (number < 0);
+
+	return number;
+}
+
+int random_Number(int from,int to) {
+
+	int RanNum;
+
+	RanNum = rand() % (to - from + 1) + from;
+
+	return RanNum;
+}
+
+void fillArrayWith_RandomNumbers(int ArrLength,int Arr[100]) {
+
+	for (int i = 0; i < ArrLength; i++)
+		Arr[i] = random_Number(1, 100);
+}
+
+void Print_Array(int ArrLength, int Arr[100]) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void SumOf_2ArraysElement(int ArrLength, int Arr1[100], int Arr2[100],int ArrSum[100]) {
+
+	for (int i = 0; i < ArrLength; i++)
+		ArrSum[i] = Arr1[i] + Arr2[i];
+}
+
+
+int main() {
+	srand((unsigned)time(NULL));//seeds the random number generator in C++, called only once.
+
+	int ArrLength, Arr1[100], Arr2[100],ArrSum[100];
+	ArrLength = Read_Positeve_Number("Enter Element Numbers:");
+
+	fillArrayWith_RandomNumbers(ArrLength, Arr1);
+	fillArrayWith_RandomNumbers(ArrLength, Arr2);
+
+	SumOf_2ArraysElement(ArrLength, Arr1, Arr2, ArrSum);
+
+	cout << "Array 1 elements:" << endl;
+	Print_Array(ArrLength, Arr1);
+
+	cout << "\nArray 2 elements:" << endl;
+	Print_Array(ArrLength, Arr2);
+
+	cout << "\nSum of Array1 and Array2 Elements:" << endl;
+	Print_Array(ArrLength, ArrSum);
+
+	return 0;
+}
