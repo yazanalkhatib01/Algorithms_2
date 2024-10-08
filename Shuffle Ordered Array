@@ -1,0 +1,85 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+// Shuffle Ordered Array
+// Problem #31
+
+int Read_Positeve_Number(string Message) {
+
+	int number = 0;
+
+	do
+	{
+		cout << Message;
+		cin >> number;
+	} while (number < 0);
+
+	return number;
+}
+
+int random_Number(int from,int to) {
+
+	int RanNum;
+
+	RanNum = rand() % (to - from + 1) + from;
+
+	return RanNum;
+}
+
+void FillArray_With1ToN(int ArrLength,int Arr[100]) {
+
+	for (int i = 0; i < ArrLength; i++) {
+
+		Arr[i] = i+1;
+	}
+}
+
+void Print_Array(int ArrLength, int Arr[100]) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+
+	}
+	cout << endl;
+}
+
+void Swap(int &A, int &B) {
+
+	int Temp = 0;
+
+	Temp = A;
+	A = B;
+	B = Temp;
+}
+
+void ShuffleArray(int ArrLength, int Arr[100]) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Swap(Arr[random_Number(1, ArrLength) - 1], Arr[random_Number(1, ArrLength) - 1]);
+	}
+}
+
+
+int main() {
+	srand((unsigned)time(NULL));//seeds the random number generator in C++, called only once.
+
+	int ArrLength, Arr1[100];
+	ArrLength = Read_Positeve_Number("Enter Element Numbers: ");
+
+	FillArray_With1ToN(ArrLength, Arr1);
+	
+	cout << "\nArray elements before shuffle:\n";
+	Print_Array(ArrLength, Arr1);
+
+	ShuffleArray(ArrLength, Arr1);
+
+	cout << "\nArray elements After shuffle:\n";
+	Print_Array(ArrLength, Arr1);
+
+
+	return 0;
+}
