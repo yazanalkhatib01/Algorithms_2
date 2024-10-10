@@ -1,0 +1,119 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+// Fill Array With Keys
+// Problem #33
+
+int RandomNumber(int From, int To) {
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+enum enCharType { SamallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4 };
+
+char GetRandomCharacter(enCharType CharType)
+{
+	switch (CharType) {
+	case enCharType::SamallLetter:
+	{ return char(RandomNumber(97, 122));
+	break;
+	}
+
+	case enCharType::CapitalLetter:
+	{ return char(RandomNumber(65, 90));
+	break;
+	}
+	case enCharType::SpecialCharacter:
+	{
+		return char(RandomNumber(33, 47));
+		break;
+	}
+	case enCharType::Digit:
+	{ return char(RandomNumber(48, 57));
+	break;
+	}
+	}
+}
+
+int Read_PositiveNum(string Message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << Message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+string Generate_Word(enCharType CharType, short Length) {
+
+	string Word;
+
+	for (int i = 1; i <= Length; i++)
+	{
+		Word = Word + GetRandomCharacter(CharType);
+	}
+
+	return Word;
+}
+
+string Generate_Kye() {
+
+	string Kye = "";
+
+	Kye = Generate_Word(enCharType::CapitalLetter, 4) + "_";
+	Kye = Kye + Generate_Word(enCharType::CapitalLetter, 4) + "_";
+	Kye = Kye + Generate_Word(enCharType::CapitalLetter, 4) + "_";
+	Kye = Kye + Generate_Word(enCharType::CapitalLetter, 4);
+
+	return Kye;
+}
+
+void Generate_Kyes(short NumOFKyes) {
+
+	for (int i = 1; i <= NumOFKyes; i++)
+	{
+		cout << "Kye[" << i << "]: ";
+		cout << Generate_Kye() << endl;
+	}
+}
+
+void FillArray_WithKeys(string Arr[100],short ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Arr[i] = Generate_Kye();
+	}
+}
+
+void PrintStringArray(string Arr[100], short ArrLength) {
+
+	cout << "\nArray Elements:\n" << endl;
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << "Array[" << i << "]: ";
+		cout << Arr[i] << endl;
+	}
+	cout << endl;
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	string Arr[100];
+	short ArrLength = 0;
+	ArrLength = Read_PositiveNum("Plese Enter how many kyes to generate? \n");
+
+	FillArray_WithKeys(Arr, ArrLength);
+	
+	PrintStringArray(Arr, ArrLength);
+
+	return 0;
+}
