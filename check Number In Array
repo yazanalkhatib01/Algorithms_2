@@ -1,0 +1,87 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+// check Number In Array
+// Problem #35
+
+int RandomNumber(int From, int To) {
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+int Read_PositiveNum(string Message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << Message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+void FillArray_Random(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Arr[i] = RandomNumber(1, 100);
+	}
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	cout << "\nArray 1 Elements:\n" << endl;
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+short FindNumberPosition_InArray(int Number, int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (Number == Arr[i])
+			return i;
+	}
+	return -1;
+}
+
+bool IsNumber_InArray(int Number, int Arr[100], int ArrLength) {
+
+	return FindNumberPosition_InArray(Number, Arr, ArrLength) != -1;
+
+}
+
+
+int main() {
+
+	srand((unsigned)time(NULL));//Seeds the random number generator in C++, called only once
+
+	int Arr[100];
+	int ArrLength = 0, Number = 0;
+	ArrLength = Read_PositiveNum("Plese Enter Number?");
+
+	FillArray_Random(Arr, ArrLength);
+
+	PrintArray(Arr, ArrLength);
+
+	Number = Read_PositiveNum("\nPlese Enter A Number to Search for?");
+	cout << "\nNumber you are looking for is: " << Number << endl;
+
+
+	if (! IsNumber_InArray(Number,Arr,ArrLength))
+		cout << "No, The Number is not found :-(\n";
+	else
+	{
+		cout << "Yes, The Number is found :-)\n";
+	}
+
+	return 0;
+}
