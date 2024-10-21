@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+// Add Array Element Simi Dynamic
+// Problem #36
+
+int Read_PositiveNum(string Message) {
+
+	int num = 0;
+
+	do
+	{
+		cout << Message << endl;
+		cin >> num;
+
+	} while (num <= 0);
+
+	return num;
+}
+
+void Add_Array_Element(int Number, int Arr[100], int &ArrLength) {
+
+	ArrLength++;
+	Arr[ArrLength - 1] = Number;
+}
+
+void Input_UserNumbers_InArray(int Arr[100], int &ArrLength) {
+	
+	bool Add_More = true;
+
+	do
+	{
+		Add_Array_Element(Read_PositiveNum("\nPlease Enter A Number?"), Arr, ArrLength);
+
+		cout << "\nDo you want to add more numbers? [0]No,[1]Yes? ";
+		cin >> Add_More;
+
+	} while (Add_More);
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int main() {
+
+	int Array[100], ArrayLength = 0;
+
+	Input_UserNumbers_InArray(Array,ArrayLength);
+
+	cout << "\nArray Length: " << ArrayLength << endl;
+	
+	cout << "Array Element: ";
+	PrintArray(Array, ArrayLength);
+
+	return 0;
+}
