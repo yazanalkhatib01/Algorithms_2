@@ -19,10 +19,9 @@ int Read_Positive_Number(string message) {
 
 enum en_Prime_NotPrime { Prime = 1, NotPrime = 2 };
 
-
 en_Prime_NotPrime Check_Prime(int number) {
 
-	int M = round(number / 2);//round()التقريب لاقرب عدد صحيح
+	int M = round(number / 2); //round()التقريب لاقرب عدد صحيح
 
 	for (int Counter = 2; Counter <= M; Counter++)
 	{
