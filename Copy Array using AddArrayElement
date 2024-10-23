@@ -1,0 +1,68 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+/* Resolve Problem 28, Copy Array using AddArrayElement.
+Problem #37 */ 
+
+int random_Number(int from, int to) {
+
+	int RanNum;
+
+	RanNum = rand() % (to - from + 1) + from;
+
+	return RanNum;
+}
+
+void fillArrayWith_RandomNumbers(int Arr[100], int &ArrLength) {
+
+	cout << "Enter Numbers Of Element:" << endl;
+	cin >> ArrLength;
+
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Arr[i] = random_Number(1, 100);
+	}
+
+}
+
+void Add_ArrayElement(int Number,int Arr[100], int &ArrLength) {
+
+	ArrLength++;
+	Arr[ArrLength - 1] = Number;
+}
+
+void CopyArray_Using_AddArrayElement(int ArraySource[100], int ArrayDestination[100], int ArrayLength, int &ArrayDestination_Length) {
+
+	for (int i = 0; i < ArrayLength; i++)
+		Add_ArrayElement(ArraySource[i], ArrayDestination, ArrayDestination_Length);
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));//seeds the random number generator in C++, called only once.
+
+	int Array1[100], Array2[100], Array_Length = 0, Array_2Length = 0;
+
+	fillArrayWith_RandomNumbers(Array1, Array_Length);
+	CopyArray_Using_AddArrayElement(Array1, Array2, Array_Length, Array_2Length);
+
+	cout << "\nArray 1 Element:" << endl;
+	PrintArray(Array1, Array_Length);
+
+	cout << "\nArray 2 Element After Copy:" << endl;
+	PrintArray(Array2, Array_2Length);
+	 
+	return 0;
+}
