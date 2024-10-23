@@ -1,0 +1,87 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+/* Copy Prime Numbers to a new Array
+Problem #39 */ 
+
+int random_Number(int from, int to) {
+
+	int RanNum;
+
+	RanNum = rand() % (to - from + 1) + from;
+
+	return RanNum;
+}
+
+void fillArrayWith_RandomNumbers(int Arr[100], int &ArrLength) {
+
+	cout << "Enter Numbers Of Element:" << endl;
+	cin >> ArrLength;
+
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Arr[i] = random_Number(1, 100);
+	}
+
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void Add_ArrayElement(int Number,int Array[100],int &ArrayLength) {
+
+	ArrayLength++;
+	Array[ArrayLength - 1] = Number;
+}
+
+
+enum en_Prime_NotPrime { Prime = 1, NotPrime = 2 };
+
+en_Prime_NotPrime Check_Prime(int number) {
+
+	int M = round(number / 2); //round()التقريب لاقرب عدد صحيح
+
+	for (int Counter = 2; Counter <= M; Counter++)
+	{
+		if (number % Counter == 0)
+			return en_Prime_NotPrime::NotPrime;
+	}
+	return en_Prime_NotPrime::Prime;
+}
+
+void CopyPrimeNumbers(int AraaySource[100],int ArrayDestination[100],int ArrayLength,int &ArrayDestenation_Leangth) {
+	
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		if (Check_Prime(AraaySource[i]) == en_Prime_NotPrime::Prime)
+			Add_ArrayElement(AraaySource[i], ArrayDestination, ArrayDestenation_Leangth);
+	}
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));//seeds the random number generator in C++, called only once.
+
+	int Array1[100], Array2[100], Array_Length = 0, Array_2Length = 0;
+
+	fillArrayWith_RandomNumbers(Array1, Array_Length);
+	
+	CopyPrimeNumbers(Array1, Array2, Array_Length, Array_2Length);
+
+	cout << "\nArray 1 Element:" << endl;
+	PrintArray(Array1, Array_Length);
+
+	cout << "\nArray 2 Prime Nnumbers:" << endl;
+	PrintArray(Array2, Array_2Length);
+	 
+	return 0;
+}
