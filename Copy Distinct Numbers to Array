@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+/* Copy Distinct Numbers to Array
+Problem #40 */ 
+
+void FillArray_HardCoded(int Arr[100], int &ArrLength) {
+
+	ArrLength = 10;
+	Arr[0] = 10;
+	Arr[1] = 10;
+	Arr[2] = 10;
+	Arr[3] = 50;
+	Arr[4] = 50;
+	Arr[5] = 70;
+	Arr[6] = 70;
+	Arr[7] = 70;
+	Arr[8] = 70;
+	Arr[9] = 90;
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << endl;
+}
+
+void Add_ArrayElement(int Number,int Array[100],int &ArrayLength) {
+
+	ArrayLength++;
+	Array[ArrayLength - 1] = Number;
+}
+
+short FindNumberPositionInArray(int Number, int arr[100], int arrLength)
+{
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] == Number)
+			return i;//return the index
+	}
+	//if you reached here, this means the number is not found
+	return -1;
+}
+
+bool IsNumberInArray(int Number, int arr[100], int arrLength)
+{
+	return FindNumberPositionInArray(Number, arr, arrLength) != -1;
+}
+
+void CopyDistinctNumbers(int ArraySource[100],int ArrayDestination[100],int SourceLength,int &ArrayDestenation_Leangth){
+	
+	for (int i = 0; i < SourceLength; i++)
+	{
+		if (!IsNumberInArray(ArraySource[i], ArrayDestination, SourceLength))
+		{
+			Add_ArrayElement(ArraySource[i], ArrayDestination, ArrayDestenation_Leangth);
+		}
+	}
+}
+
+
+
+int main() {
+
+	int ArraySource[100], ArrayDestination[100], Array_LengthSource = 0, Array_LengthDestination = 0;
+
+	FillArray_HardCoded(ArraySource, Array_LengthSource);
+	
+	cout << "\nArray 1 Element:" << endl;
+	PrintArray(ArraySource, Array_LengthSource);
+
+
+	CopyDistinctNumbers(ArraySource, ArrayDestination, Array_LengthSource, Array_LengthDestination);
+
+	cout << "\nArray 2 Distinct Elements:" << endl;
+	PrintArray(ArrayDestination, Array_LengthDestination);
+	 
+	return 0;
+}
