@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+/* Count Positive Numbers InArray
+Problem #44 */
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "\nEnter number of elements:\n";
+	cin >> arrLength;
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(-100, 100);
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << "\n\n";
+}
+
+int CountPositiveNumbers_InArray(int Arr[100], int ArrLength) {
+
+	int count = 0;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (Arr[i] >= 0) {
+
+			count++;
+		}
+	}
+
+	return count;
+}
+
+int main() {
+	//Seeds the random number generator in C++, called only once
+	srand((unsigned)time(NULL));
+
+	int Array[100], Array_Length;
+
+	FillArrayWithRandomNumbers(Array, Array_Length);
+
+	cout << "\nArray Elements:";
+	PrintArray(Array, Array_Length);
+
+	cout << "Positive Numbers Count is: "
+		<< CountPositiveNumbers_InArray(Array, Array_Length) << endl;
+
+	return 0;
+}
