@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+/* Count Odd Number in Array
+Problem #42 */
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int& arrLength)
+{
+	cout << "\nEnter number of elements:\n";
+	cin >> arrLength;
+	for (int i = 0; i < arrLength; i++)
+		arr[i] = RandomNumber(1, 100);
+}
+
+void PrintArray(int Arr[100], int ArrLength) {
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Arr[i] << " ";
+	}
+	cout << "\n\n";
+}
+
+int OddNumbers_InArray(int Arr[100], int ArrLength) {
+
+	int count = 0;
+
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (Arr[i] % 2 != 0) {
+
+			count++;
+		}
+	}
+
+	return count;
+}
+
+int main() {
+	//Seeds the random number generator in C++, called only once
+	srand((unsigned)time(NULL));
+
+	int Array[100], Array_Length = 0;
+
+	FillArrayWithRandomNumbers(Array, Array_Length);
+
+	cout << "\nArray Element:";
+	PrintArray(Array, Array_Length);
+
+	cout << "Odd Numbers Count is: "
+		<< OddNumbers_InArray(Array, Array_Length) << endl;
+
+	return 0;
+}
