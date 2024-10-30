@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+/* My ABS
+Problem #46 */
+
+float ReadNumber() {
+
+	int Number;
+	cout << "Enter Number: ";
+	cin >> Number;
+
+	return Number;
+}
+
+float MyABS(float Number) {
+
+	if (Number > 0)
+		return Number;
+	else
+		return Number * -1;
+}
+
+int main() {
+	
+	int Number = ReadNumber();
+
+	cout << "\nMy ABS Result: " << MyABS(Number);
+	cout << "\nC++ ABS Result: " << abs(Number) << endl;
+
+	return 0;
+}
