@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+/* My Round
+Problem #47 */
+
+float ReadNumber() {
+
+	float Number;
+	cout << "Enter Number: ";
+	cin >> Number;
+
+	return Number;
+}
+
+float GitFractionsPart(float Number) {
+	return Number - int(Number);
+}
+
+int MyRound(float Number) {
+
+	int IntPart;
+	IntPart = int(Number);
+
+	float FractionsPart = GitFractionsPart(Number);
+
+	if (abs(FractionsPart) >= .5)
+	{
+		if (Number > 0)
+			return ++IntPart;
+		else
+			return --IntPart;
+	}
+	else 
+	{
+		return IntPart;
+	}
+}
+
+int main() {
+	
+	float Number = ReadNumber();
+
+	cout << "\nMy Round Result: " << MyRound(Number);
+	cout << "\nC++ Round Result: " << round(Number) << endl;
+
+	return 0;
+}
