@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+/* My Ceil
+Problem #49 */
+
+float ReadNumber() {
+
+	float Number;
+	cout << "Enter Number: ";
+	cin >> Number;
+
+	return Number;
+}
+
+int MyCeil(float Number) {
+
+	if (Number == int(Number))
+		return Number;
+	else
+	{
+		if (Number > 0)
+			return int(Number) + 1;
+		else
+			return int(Number);
+	}
+}
+
+int main() {
+	
+	float Number = ReadNumber();
+
+	cout << "\nMy Round Result: " << MyCeil(Number);
+	cout << "\nC++ Round Result: " << ceil(Number) << endl;
+
+	return 0;
+}
