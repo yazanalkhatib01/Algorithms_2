@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+/* My Floor
+Problem #48 */
+
+float ReadNumber() {
+
+	float Number;
+	cout << "Enter Number: ";
+	cin >> Number;
+
+	return Number;
+}
+
+int MyFloor(float Number) {
+
+	if (Number > 0)
+		return int(Number);
+	else
+		return int(Number) - 1;
+}
+
+int main() {
+	
+	float Number = ReadNumber();
+
+	cout << "\nMy Round Result: " << MyFloor(Number);
+	cout << "\nC++ Round Result: " << floor(Number) << endl;
+
+	return 0;
+}
